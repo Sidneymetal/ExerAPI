@@ -5,9 +5,14 @@ namespace ExercicioAPI.Controllers;
 public class CalculadoraController : ControllerBase
 {
     [HttpGet("Somar")]
-    public double Adicao(double numero1, double numero2)
+    public IActionResult Adicao(double numero1, double numero2)
     {
-        return numero1 + numero2;
+        if(numero1 < 1000 & numero2 < 1000)
+        {
+            return Ok(numero1 + numero2);            
+        }
+        return BadRequest("O número não pode ser maior do que 999.");
+        
     }
     [HttpGet("Subtrair")]
     public double Subtracao(double numero1, double numero2)
