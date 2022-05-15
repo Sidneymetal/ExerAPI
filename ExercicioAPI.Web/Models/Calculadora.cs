@@ -1,25 +1,50 @@
+using ExercicioAPI.Web.Models;
+
 namespace ExercicioAPI.Models;
 public class Calculadora
 {
-    public double Somar(double num1, double num2)
+    public double Somar(double numero1, double numero2)
     {
-        return num1 + num2;
+        if (ValidarNumero(numero1) && ValidarNumero(numero2))
+        {
+            return numero1 + numero2;
+        }
+        throw new InputIncorreto("Esse número é inválido.");
     }
-    public double Substrair(double num1, double num2)
+    public double Subtrair(double numero1, double numero2)
     {
-        return num1 - num2;
+        if (ValidarNumero(numero1) && ValidarNumero(numero2))
+        {
+            return numero1 - numero2;
+        }
+        throw new InputIncorreto("Esse número é inválido.");
     }
-    public double Dividir(double num1, double num2)
+
+    public double Dividir(double numero1, double numero2)
     {
-        return num1 / num2;
+        if (ValidarNumero(numero1) && ValidarNumero(numero2) && ValidarMenorZero(numero1) && ValidarMenorZero(numero2))
+        {
+            return numero1 / numero2;
+        }
+        throw new InputIncorreto("Esse número é inválido.");
     }
-    public double Multiplicar(double num1, double num2)
+    public double Multiplicar(double numero1, double numero2)
     {
-        return num1 * num2;
+        if (ValidarNumero(numero1) && ValidarNumero(numero2) && ValidarMenorZero(numero1) && ValidarMenorZero(numero2))
+        {
+            return numero1 * numero2;
+        }
+        throw new InputIncorreto("Esse número é inválido.");
     }
     public bool ValidarNumero(double valor)
     {
         if (valor != 0 & valor < 1000)
+            return true;
+        return false;
+    }
+    public bool ValidarMenorZero(double valor)
+    {
+        if (valor > 0)
             return true;
         return false;
     }
