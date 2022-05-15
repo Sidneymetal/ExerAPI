@@ -71,7 +71,7 @@ public class CalculadoraController : ControllerBase
             {
                 return BadRequest(ex.Message);
             }
-        };
+        }
     }
 }
 
